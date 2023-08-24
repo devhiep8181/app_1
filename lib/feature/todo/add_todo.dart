@@ -12,10 +12,16 @@ class AddToDo extends StatefulWidget {
 
 class _AddToDoState extends State<AddToDo> {
   List<ContentToDo> listToDo = [];
-  DateTime selectedTime = DateTime.now();
+
   int edittingIndex = -1;
+  //edittingIndex: theo dõi vị trí đối tượng đang được chỉnh sửa
+  //flow: ấn vào nút edit -> gọi hàm editElement() -> gán giá trị eddittingIndex = index
+  // -> giá trị sẽ được gán cho TextFormField -> gọi hàm _saveElement lưu đối tượng -> clear
+
   TextEditingController _textTitle = TextEditingController();
   TextEditingController _dateEditingController = TextEditingController();
+
+  DateTime selectedTime = DateTime.now();
   final DateFormat _dateFormat = DateFormat("dd-MM-yyyy");
   bool hasSelectedDate = false;
 
@@ -48,7 +54,7 @@ class _AddToDoState extends State<AddToDo> {
 //edit
   void _editElement(int index) {
     setState(() {
-      edittingIndex = index;
+      edittingIndex = index; //vị trí hiện tại đang chỉnh sửa
       _textTitle.text = listToDo[index].title;
       selectedTime = listToDo[index].dateTime;
     });
@@ -62,7 +68,7 @@ class _AddToDoState extends State<AddToDo> {
           ContentToDo(title: updateTitle, dateTime: selectedTime);
       setState(() {
         listToDo[edittingIndex] = updateTodo;
-        edittingIndex = -1;
+        edittingIndex = -1; //thoát trạng thái chỉnh sửa
         _textTitle.clear();
         _dateEditingController.clear();
       });
