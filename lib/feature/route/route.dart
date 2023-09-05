@@ -1,3 +1,5 @@
+import 'package:app_1/feature/onboarding/onboarding_screen.dart';
+import 'package:app_1/feature/splash/splash_screen.dart';
 import 'package:app_1/feature/todo/edit_todo_screen.dart';
 
 import '../todo/add_todo.dart';
@@ -10,6 +12,10 @@ import 'package:flutter/material.dart';
 class Routes {
   static Route<dynamic>? customRouteGenerator(RouteSettings settings) {
     switch (settings.name) {
+      case splash:
+        return MaterialPageRoute(builder: (_) => Splash());
+      case onboarding:
+        return MaterialPageRoute(builder: (_) => Onboarding());
       case todoScreen:
         return MaterialPageRoute(
             settings: RouteSettings(arguments: settings.arguments),
