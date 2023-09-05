@@ -1,11 +1,13 @@
 import 'dart:convert';
-import 'package:app_1/feature/route/route_constant.dart';
-import 'package:app_1/feature/todo/todo_model.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+
+import '../route/route_constant.dart';
+import 'todo_model.dart';
+import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:uuid/uuid.dart';
+import '../theme/color_palettes.dart';
+import '../theme/typhography.dart';
 import 'todo_provider.dart';
 
 class TodoScreen extends StatefulWidget {
@@ -37,9 +39,11 @@ class _TodoScreenState extends State<TodoScreen> {
     todos = todoProvider.todos;
     return Scaffold(
       appBar: AppBar(
-        title: Text("Todo List"),
+        backgroundColor: ColorPalettes.primaryColor,
+        title: Text("Todo List", style: AppTextStyle.H4(color: Colors.white)),
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: ColorPalettes.primaryColor,
         onPressed: () {
           Navigator.of(context).pushNamed(addTodo);
         },
@@ -66,12 +70,22 @@ class _TodoScreenState extends State<TodoScreen> {
                           padding: EdgeInsets.all(8),
                           width: double.minPositive,
                           decoration: BoxDecoration(
-                              color: Color.fromARGB(255, 227, 224, 225),
-                              borderRadius: BorderRadius.circular(16),
-                              border: Border.all(
-                                width: 1.0,
-                                color: Color(0xffBEBAB3),
-                              )),
+                            color: Colors.grey[100],
+                            borderRadius: BorderRadius.circular(16),
+                            border: Border.all(
+                              width: 0.5,
+                              color: Color(0xffBEBAB3),
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black
+                                    .withOpacity(0.2), // Màu của đổ bóng
+                                spreadRadius: 2, // Bán kính của đổ bóng
+                                blurRadius: 4, // Độ mờ của đổ bóng
+                                offset: Offset(0, 2), // Vị trí của đổ bóng
+                              ),
+                            ],
+                          ),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
@@ -88,6 +102,8 @@ class _TodoScreenState extends State<TodoScreen> {
                                   const SizedBox(height: 4),
                                   Text(
                                     todo.description,
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
                                     style: TextStyle(
                                         decoration: textDecoration,
                                         fontSize: 16,

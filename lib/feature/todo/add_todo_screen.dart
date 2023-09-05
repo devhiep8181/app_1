@@ -7,6 +7,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uuid/uuid.dart';
 import 'package:provider/provider.dart';
 
+import '../theme/color_palettes.dart';
+import '../theme/typhography.dart';
+
 //TODO: 25/8 XONG MÀM ADD
 // DỰ kiến cập nhập chuyển dữ liệu sang màn hình home và tính năng sửa xoá vào ngày 27.8
 
@@ -59,7 +62,8 @@ class _AddTodoState extends State<AddTodo> {
 
     return Scaffold(
         appBar: AppBar(
-          title: Text("Add Todo"),
+          backgroundColor: ColorPalettes.primaryColor,
+          title: Text("Add Todo", style: AppTextStyle.H4(color: Colors.white)),
         ),
         body: Padding(
           padding: EdgeInsets.all(16),
@@ -102,6 +106,9 @@ class _AddTodoState extends State<AddTodo> {
               ),
               SizedBox(height: 16),
               ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: ColorPalettes.primaryColor,
+                  ),
                   onPressed: () {
                     TodoModel todo = TodoModel(
                         uid: uid.v4(),
@@ -115,7 +122,8 @@ class _AddTodoState extends State<AddTodo> {
                     Navigator.of(context).pop();
                     setData(todoProvider.todos);
                   },
-                  child: Text("Save")),
+                  child: Text("Save",
+                      style: AppTextStyle.buttonMedium(color: Colors.white))),
             ],
           ),
         ));

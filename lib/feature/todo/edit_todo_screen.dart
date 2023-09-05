@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:app_1/feature/theme/color_palettes.dart';
+import 'package:app_1/feature/theme/typhography.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -62,7 +64,11 @@ class _EditTodoState extends State<EditTodo> {
 
     return Scaffold(
         appBar: AppBar(
-          title: Text("Edit Todo"),
+          backgroundColor: ColorPalettes.primaryColor,
+          title: Text(
+            "Edit Todo",
+            style: AppTextStyle.H4(color: Colors.white),
+          ),
         ),
         body: Padding(
           padding: EdgeInsets.all(16),
@@ -70,7 +76,7 @@ class _EditTodoState extends State<EditTodo> {
             children: [
               TextFormField(
                 controller: titleController,
-                decoration: InputDecoration(hintText: widget.todo.title),
+                decoration: InputDecoration(hintText: "Enter title"),
               ),
               SizedBox(height: 16),
               TextFormField(
@@ -103,6 +109,9 @@ class _EditTodoState extends State<EditTodo> {
               ),
               SizedBox(height: 16),
               ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: ColorPalettes.primaryColor,
+                  ),
                   onPressed: () {
                     TodoModel todo = TodoModel(
                         uid: widget.todo.uid, // trùng id mới update được
@@ -115,7 +124,8 @@ class _EditTodoState extends State<EditTodo> {
                     setData(todoProvider.todos);
                     Navigator.of(context).pop();
                   },
-                  child: Text("Save")),
+                  child: Text("Save",
+                      style: AppTextStyle.buttonMedium(color: Colors.white))),
             ],
           ),
         ));
