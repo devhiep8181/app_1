@@ -1,3 +1,3 @@
-const String intinaRoute = "/";
-const String homeToDo = "/HomeToDo";
-const String addToDo = "/AddToDo";
+const String todoScreen = "/";
+const String addTodo = "/AddTodo";
+const String editTodo = "/EditTodo";

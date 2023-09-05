@@ -1,22 +1,23 @@
 import 'dart:convert';
 
 import 'package:app_1/feature/todo/todo_model.dart';
+import 'package:app_1/feature/todo/todo_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uuid/uuid.dart';
+import 'package:provider/provider.dart';
 
 //TODO: 25/8 XONG MÀM ADD
 // DỰ kiến cập nhập chuyển dữ liệu sang màn hình home và tính năng sửa xoá vào ngày 27.8
 
-class AddToDo extends StatefulWidget {
-  AddToDo({super.key});
+class AddTodo extends StatefulWidget {
+  AddTodo({super.key});
 
   @override
-  State<AddToDo> createState() => _AddToDoState();
+  State<AddTodo> createState() => _AddTodoState();
 }
 
-class _AddToDoState extends State<AddToDo> {
-  List<TodoModel> listTodo = [];
+class _AddTodoState extends State<AddTodo> {
   TextEditingController titleController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
   var uid = const Uuid();
@@ -43,32 +44,19 @@ class _AddToDoState extends State<AddToDo> {
     }
   }
 
-  addTodo(TodoModel todoModel) {
-    setState(() {
-      listTodo.add(TodoModel(
-        uid: todoModel.uid,
-        title: todoModel.title,
-        description: todoModel.description,
-        startTime: todoModel.startTime,
-        endTime: todoModel.endTime,
-        isDone: 'false',
-      ));
-    });
-
-    // final listTodoSave = listTodo;
-    // setData(listTodoSave);
-  }
-
   setData(List<TodoModel> todo) async {
     final List<Map<String, dynamic>> listTodoMap =
         todo.map((e) => e.toMap()).toList();
-    final json = jsonEncode(listTodoMap);
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    String json = jsonEncode(listTodoMap);
+    SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setString("isSave", json);
   }
 
   @override
   Widget build(BuildContext context) {
+    final todoProvider = Provider.of<TodoProvider>(context);
+    //final todos = todoProvider.todos; // Danh sách công việc
+
     return Scaffold(
         appBar: AppBar(
           title: Text("Add Todo"),
@@ -115,25 +103,19 @@ class _AddToDoState extends State<AddToDo> {
               SizedBox(height: 16),
               ElevatedButton(
                   onPressed: () {
-                    addTodo(TodoModel(
+                    TodoModel todo = TodoModel(
                         uid: uid.v4(),
                         title: titleController.text,
                         description: descriptionController.text,
                         startTime: startTime.toString(),
                         endTime: endTime.toString(),
-                        isDone: "false"));
+                        isDone: "false");
+                    todoProvider.addTodo(todo);
+
+                    Navigator.of(context).pop();
+                    setData(todoProvider.todos);
                   },
                   child: Text("Save")),
-              Expanded(
-                  child: ListView.builder(
-                      itemCount: listTodo.length,
-                      itemBuilder: (_, index) {
-                        return ListTile(
-                            title: Text(listTodo[index].title),
-                            subtitle: Text(listTodo[index].description),
-                            trailing: Text(
-                                "${listTodo[index].startTime.toString().substring(10, 15)} - ${listTodo[index].endTime.toString().substring(10, 15)}"));
-                      }))
             ],
           ),
         ));
