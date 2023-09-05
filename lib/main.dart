@@ -1,21 +1,20 @@
-import 'package:app_1/test.dart';
-
-import 'feature/todo/add_todo.dart';
-import 'feature/route/route.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import 'feature/route/route.dart';
+import 'feature/todo/todo_provider.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(ChangeNotifierProvider(
+      create: (context) => TodoProvider(), child: AppFirst()));
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
+class AppFirst extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        //onGenerateRoute: Routes.customRouteGenerator,
-        home: AddToDo());
+      onGenerateRoute: Routes.customRouteGenerator,
+      debugShowCheckedModeBanner: false,
+    );
   }
 }
