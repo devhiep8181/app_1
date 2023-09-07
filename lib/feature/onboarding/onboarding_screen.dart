@@ -104,7 +104,7 @@ class _OnboardingState extends State<Onboarding> {
               onPressed: () {
                 if (currentIndex == content.length - 1) {
                   Navigator.of(context)
-                      .pushNamedAndRemoveUntil(todoScreen, (route) => false);
+                      .pushNamedAndRemoveUntil(loginScreen, (route) => false);
                 }
                 _controller?.nextPage(
                     duration: const Duration(milliseconds: 100),
