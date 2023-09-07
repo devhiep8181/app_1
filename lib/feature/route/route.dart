@@ -1,3 +1,5 @@
+import 'package:app_1/feature/login/login_screen.dart';
+import 'package:app_1/feature/login/sign_up_screen.dart';
 import 'package:app_1/feature/onboarding/onboarding_screen.dart';
 import 'package:app_1/feature/splash/splash_screen.dart';
 import 'package:app_1/feature/todo/edit_todo_screen.dart';
@@ -27,6 +29,10 @@ class Routes {
         return MaterialPageRoute(
             settings: RouteSettings(arguments: settings.arguments),
             builder: (_) => EditTodo(todo: argument));
+      case loginScreen:
+        return MaterialPageRoute(builder: (_) => LoginScreen());
+      case signUpScreen:
+        return MaterialPageRoute(builder: (_) => SignUp());
     }
   }
 }

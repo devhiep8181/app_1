@@ -28,15 +28,15 @@ class _SplashState extends State<Splash> {
 
   _checkFirstTime() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    bool? isFirstTime = prefs.getBool("isFirstTime");
+    bool? isFirstTime = prefs.getBool("isFirst");
 
     if (isFirstTime == null) {
       Navigator.of(context)
           .pushNamedAndRemoveUntil(onboarding, (route) => false);
-      prefs.setBool("isFirstTime", true);
+      prefs.setBool("isFirst", true);
     } else {
       Navigator.of(context)
-          .pushNamedAndRemoveUntil(todoScreen, (route) => false);
+          .pushNamedAndRemoveUntil(loginScreen, (route) => false);
     }
   }
 
@@ -50,7 +50,7 @@ class _SplashState extends State<Splash> {
         ),
         onPressed: () {
           Navigator.of(context)
-              .pushNamedAndRemoveUntil("/onBoarding", (route) => false);
+              .pushNamedAndRemoveUntil(onboarding, (route) => false);
         },
         child: Column(
           children: [
