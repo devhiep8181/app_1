@@ -48,7 +48,7 @@ class _SignUpState extends State<SignUp> {
                 ),
                 const SizedBox(height: 16),
                 TextFormField(
-                  controller: _emailTextEdittingController,
+                  controller: _nameTextEdittingController,
                   decoration: InputDecoration(
                       labelText: "Name",
                       enabledBorder: OutlineInputBorder(
@@ -114,9 +114,13 @@ class _SignUpState extends State<SignUp> {
                               borderRadius: BorderRadius.circular(16)),
                         )),
                     onPressed: () {
-                      FirebaseAuth.instance.createUserWithEmailAndPassword(
-                          email: _emailTextEdittingController.text,
-                          password: _passWordTextEdittingController.text);
+                      FirebaseAuth.instance
+                          .createUserWithEmailAndPassword(
+                              email: _emailTextEdittingController.text,
+                              password: _passWordTextEdittingController.text)
+                          .then((value) {
+                        Navigator.of(context).pushNamed(loginScreen);
+                      });
                       //them man hinh alog thong bao dang ki thanh cong
                     },
                     child: Row(
