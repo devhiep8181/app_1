@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 
 class AppTextStyle {
+  // ignore: non_constant_identifier_names
   static TextStyle H1({
     Color color = const Color(0xFF3B3936),
   }) {
@@ -14,6 +15,7 @@ class AppTextStyle {
     );
   }
 
+  // ignore: non_constant_identifier_names
   static TextStyle H2({
     Color color = const Color(0xFF3B3936),
   }) {
@@ -27,6 +29,7 @@ class AppTextStyle {
     );
   }
 
+  // ignore: non_constant_identifier_names
   static TextStyle H3({
     Color color = const Color(0xFF3B3936),
   }) {
@@ -40,6 +43,7 @@ class AppTextStyle {
     );
   }
 
+  // ignore: non_constant_identifier_names
   static TextStyle H4({
     Color color = const Color(0xFF3B3936),
   }) {
@@ -53,6 +57,7 @@ class AppTextStyle {
     );
   }
 
+  // ignore: non_constant_identifier_names
   static TextStyle H5({
     Color color = const Color(0xFF3B3936),
   }) {

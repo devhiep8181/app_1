@@ -4,6 +4,7 @@ import 'package:app_1/ui_components/btn/btn_default.dart';
 import 'package:app_1/ui_components/btn/btn_tag.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class CourseDetail extends StatelessWidget {
   String bodyText;
   String bodyTextTime;
@@ -16,9 +17,7 @@ class CourseDetail extends StatelessWidget {
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            BtnTag(title: "\$ 50", horizontal: 16, width: 58, height: 26),
-          ],
+          children: [BtnTag(title: "\$ 50", horizontal: 16, vertical: 4)],
         ),
         const SizedBox(height: 16),
         Text(

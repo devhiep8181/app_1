@@ -10,11 +10,8 @@ import 'package:provider/provider.dart';
 import '../theme/color_palettes.dart';
 import '../theme/typhography.dart';
 
-//TODO: 25/8 XONG MÀM ADD
-// DỰ kiến cập nhập chuyển dữ liệu sang màn hình home và tính năng sửa xoá vào ngày 27.8
-
 class AddTodo extends StatefulWidget {
-  AddTodo({super.key});
+  const AddTodo({super.key});
 
   @override
   State<AddTodo> createState() => _AddTodoState();
@@ -66,23 +63,23 @@ class _AddTodoState extends State<AddTodo> {
           title: Text("Add Todo", style: AppTextStyle.H4(color: Colors.white)),
         ),
         body: Padding(
-          padding: EdgeInsets.all(16),
+          padding: const EdgeInsets.all(16),
           child: Column(
             children: [
               TextFormField(
                 controller: titleController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   hintText: "Enter title",
                 ),
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               TextFormField(
                 controller: descriptionController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   hintText: "Enter description",
                 ),
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -92,7 +89,7 @@ class _AddTodoState extends State<AddTodo> {
                       },
                       child: Text(
                         "Start Time: ${startTime.format(context)}",
-                        style: TextStyle(color: Color(0xFF65AAEA)),
+                        style: const TextStyle(color: Color(0xFF65AAEA)),
                       )),
                   TextButton(
                       onPressed: () {
@@ -100,11 +97,11 @@ class _AddTodoState extends State<AddTodo> {
                       },
                       child: Text(
                         "End Time: ${endTime.format(context)}",
-                        style: TextStyle(color: Colors.red),
+                        style: const TextStyle(color: Colors.red),
                       )),
                 ],
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: ColorPalettes.primaryColor,

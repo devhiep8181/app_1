@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class SearchField extends StatelessWidget {
   final IconData? suffixIcon;
   final String hintText;
-  SearchField({super.key, this.suffixIcon, required this.hintText});
+  const SearchField({super.key, this.suffixIcon, required this.hintText});
 
   @override
   Widget build(BuildContext context) {

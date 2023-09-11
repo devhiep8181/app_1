@@ -31,10 +31,12 @@ class _SplashState extends State<Splash> {
     bool? isFirstTime = prefs.getBool("isFirst");
 
     if (isFirstTime == null) {
+      // ignore: use_build_context_synchronously
       Navigator.of(context)
           .pushNamedAndRemoveUntil(onboarding, (route) => false);
       prefs.setBool("isFirst", true);
     } else {
+      // ignore: use_build_context_synchronously
       Navigator.of(context)
           .pushNamedAndRemoveUntil(loginScreen, (route) => false);
     }

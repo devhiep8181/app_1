@@ -44,6 +44,7 @@ class _EditTodoState extends State<EditTodo> {
     }
   }
 
+  @override
   void initState() {
     super.initState();
     titleController.text = widget.todo.title;
@@ -71,21 +72,21 @@ class _EditTodoState extends State<EditTodo> {
           ),
         ),
         body: Padding(
-          padding: EdgeInsets.all(16),
+          padding: const EdgeInsets.all(16),
           child: Column(
             children: [
               TextFormField(
                 controller: titleController,
-                decoration: InputDecoration(hintText: "Enter title"),
+                decoration: const InputDecoration(hintText: "Enter title"),
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               TextFormField(
                 controller: descriptionController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   hintText: "Enter description",
                 ),
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -95,7 +96,7 @@ class _EditTodoState extends State<EditTodo> {
                       },
                       child: Text(
                         "Start Time: ${startTime.format(context)}",
-                        style: TextStyle(color: Color(0xFF65AAEA)),
+                        style: const TextStyle(color: Color(0xFF65AAEA)),
                       )),
                   TextButton(
                       onPressed: () {
@@ -103,11 +104,11 @@ class _EditTodoState extends State<EditTodo> {
                       },
                       child: Text(
                         "End Time: ${endTime.format(context)}",
-                        style: TextStyle(color: Colors.red),
+                        style: const TextStyle(color: Colors.red),
                       )),
                 ],
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: ColorPalettes.primaryColor,

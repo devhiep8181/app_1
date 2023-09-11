@@ -10,10 +10,10 @@ class CourseCard extends StatelessWidget {
   final String nameCourse;
   final String discriptionCourse;
   final Widget? customChild;
-  CourseCard(
+  const CourseCard(
       {Key? key,
       required this.img,
-      this.price,
+      required this.price,
       required this.timeCourse,
       required this.nameCourse,
       required this.discriptionCourse,
@@ -31,9 +31,9 @@ class CourseCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
+          SizedBox(
             // decoration: BoxDecoration(color: ColorPalettes.secondaryColor),
-            height: 194,
+            height: 196,
             child: Column(
               children: [
                 Padding(
@@ -45,12 +45,8 @@ class CourseCard extends StatelessWidget {
                   child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        customChild ??
-                            BtnTag(
-                                title: price,
-                                horizontal: 16,
-                                width: 58,
-                                height: 26)
+                        if (price != null)
+                          BtnTag(title: price!, horizontal: 16, vertical: 4)
                       ]),
                 ),
               ],

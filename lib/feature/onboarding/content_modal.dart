@@ -1,5 +1,6 @@
 import '../../assets.dart';
 
+// ignore: camel_case_types
 class unboardingContent {
   String image;
   String title;

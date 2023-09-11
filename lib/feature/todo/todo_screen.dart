@@ -1,6 +1,4 @@
 import 'dart:convert';
-import 'package:flutter_slidable/flutter_slidable.dart';
-
 import '../route/route_constant.dart';
 import 'todo_model.dart';
 import 'package:flutter/material.dart';
@@ -47,7 +45,7 @@ class _TodoScreenState extends State<TodoScreen> {
         onPressed: () {
           Navigator.of(context).pushNamed(addTodo);
         },
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
       body: Column(
         children: [
@@ -67,14 +65,14 @@ class _TodoScreenState extends State<TodoScreen> {
                       child: Padding(
                         padding: const EdgeInsets.all(16),
                         child: Container(
-                          padding: EdgeInsets.all(8),
+                          padding: const EdgeInsets.all(8),
                           width: double.minPositive,
                           decoration: BoxDecoration(
                             color: Colors.grey[100],
                             borderRadius: BorderRadius.circular(16),
                             border: Border.all(
                               width: 0.5,
-                              color: Color(0xffBEBAB3),
+                              color: const Color(0xffBEBAB3),
                             ),
                             boxShadow: [
                               BoxShadow(
@@ -82,7 +80,8 @@ class _TodoScreenState extends State<TodoScreen> {
                                     .withOpacity(0.2), // Màu của đổ bóng
                                 spreadRadius: 2, // Bán kính của đổ bóng
                                 blurRadius: 4, // Độ mờ của đổ bóng
-                                offset: Offset(0, 2), // Vị trí của đổ bóng
+                                offset:
+                                    const Offset(0, 2), // Vị trí của đổ bóng
                               ),
                             ],
                           ),
@@ -135,7 +134,7 @@ class _TodoScreenState extends State<TodoScreen> {
                                         todoProvider.deleteTodo(todo.uid);
                                         setData(todoProvider.todos);
                                       },
-                                      icon: Icon(Icons.delete))
+                                      icon: const Icon(Icons.delete))
                                 ],
                               ),
                             ],

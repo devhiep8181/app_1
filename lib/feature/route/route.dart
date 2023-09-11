@@ -1,10 +1,11 @@
+import 'package:app_1/feature/login/cubit/login_cubit.dart';
 import 'package:app_1/feature/login/login_screen.dart';
 import 'package:app_1/feature/login/sign_up_screen.dart';
 import 'package:app_1/feature/onboarding/onboarding_screen.dart';
 import 'package:app_1/feature/splash/splash_screen.dart';
 import 'package:app_1/feature/todo/edit_todo_screen.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../todo/add_todo.dart';
 import '../todo/add_todo_screen.dart';
 import '../todo/todo_screen.dart';
 
@@ -15,24 +16,33 @@ class Routes {
   static Route<dynamic>? customRouteGenerator(RouteSettings settings) {
     switch (settings.name) {
       case splash:
-        return MaterialPageRoute(builder: (_) => Splash());
+        return MaterialPageRoute(builder: (_) => const Splash());
       case onboarding:
-        return MaterialPageRoute(builder: (_) => Onboarding());
+        return MaterialPageRoute(builder: (_) => const Onboarding());
       case todoScreen:
         return MaterialPageRoute(
             settings: RouteSettings(arguments: settings.arguments),
-            builder: (_) => TodoScreen());
+            builder: (_) => const TodoScreen());
       case addTodo:
-        return MaterialPageRoute(builder: (_) => AddTodo());
+        return MaterialPageRoute(builder: (_) => const AddTodo());
       case editTodo:
         final argument = settings.arguments as dynamic;
         return MaterialPageRoute(
             settings: RouteSettings(arguments: settings.arguments),
             builder: (_) => EditTodo(todo: argument));
       case loginScreen:
-        return MaterialPageRoute(builder: (_) => LoginScreen());
+        return MaterialPageRoute(
+            builder: (_) => BlocProvider(
+                  create: (context) => LoginCubit(),
+                  child: const LoginScreen(),
+                ));
       case signUpScreen:
-        return MaterialPageRoute(builder: (_) => SignUp());
+        return MaterialPageRoute(
+            builder: (_) => BlocProvider(
+                  create: (context) => LoginCubit(),
+                  child: const SignUp(),
+                ));
     }
+    return null;
   }
 }
